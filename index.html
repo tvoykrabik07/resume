@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Крабик</title>
+    <link rel="stylesheet" href="stule.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="brand">logo</h1>
+        <article class="toggle-btn">
+            <span></span>
+            <span></span>
+        </article>
+        <ul class="links-contaiger">
+            <li class="links-item">
+                <a href="#" class="link active">Главная</a>
+            </li>
+            <li class="links-item">
+                <a href="#about-section" class="link">Обо мне</a>
+            </li>
+            <li class="links-item">
+                <a href="#project-section" class="link">Проекты</a>
+            </li>
+        </ul>
+    </nav>
+    <section class="home">
+        <article class="hero-content">
+            <h1 class="hero-heading">
+                <span class="highlight">привет, </span> меня зовут крабик
+            </h1>
+            <p class="profession">Веб-разработчик</p>
+            <p class="info">Занимаюсь веб-разработкой 1-й год в "IT-куб".</p>
+            <a href="#contact-section" class="btn">мои контакты</a>
+        </article>
+        <img src="images/ava.jpg" alt="" class="image">
+    </section>
+    <section class="about" id="about-section">
+        <h2 class="heading">Обо <span class="highlight">мне</span></h2>
+        <p class="sub-heading">Сейчас вы узнаете мою историю</p>
+        <div class="separator"></div>
+        <section class="about-me-container">
+            <article class="left-col">
+                <img src="images/z.jpg" alt="" class="about-image">
+            </article>
+            <article class="right-col">
+                <p class="about-para">Я родилась 6 февраля 2007 года в Великом Новгороде. На данный момент мне 16 лет. Я старший ребёнок в семье, среднестатическая школьница. Учусь в 9 классе и готовлюсь к ОГЭ. В свободное время я читаю книги, классику и детективы, моя любимая книга "Горе от ума". Смотрю сериалы, мои любимые "Ривердейл", "Эйфория". Мне нравится писать сайты и программировать. В будущем я хотела бы работать Веб-разработчиком или программистом. </p>
+            </article>
+        </section>
+        <h2 class="heading">Языки и технологии, которые я знаю</h2>
+        <div class="separator"></div>
+        <article class="skill-container">
+            <article class="skill-card">
+                <p class="skill">HTNL</p>
+            </article>
+            <article class="skill-card">
+                <p class="skill">CSS</p>
+            </article>
+            <article class="skill-card">
+                <p class="skill">Python</p>
+            </article>
+        </article>
+    </section>
+    <section class="project" id="project-section">
+        <h2 class="heading"><span class="highlight">Мои </span>проекты</h2>
+        <p class="sub-heading">Мои самые лучшие работы</p>
+        <div class="separator"></div>
+        <section class="filters">
+            <button class="filter-btn active" id="all">Все</button>
+            <button class="filter-btn" id="web">веб-разработка</button>
+            <button class="filter-btn" id="python">Разработка на Python</button>
+        </section>
+        <section class="project-container">
+            <a class="project-card" data-tags="all web" href="https://tvoykrabik07.github.io/visitka/">
+                <img src="images/1637317941_10-papik-pro-p-estetichnaya-lyagushka-risunok-10.jpg" alt="">
+                <article class="content">
+                    <h1 class="project-name">Визитка</h1>
+                    <span class="tags">#html #css</span>
+                </article>
+            </a>
+            <a class="project-card" data-tags="all web" href="https://tvoykrabik07.github.io/tuning/">
+                <img src="images/background.jpg" alt="">
+                <article class="content">
+                    <h1 class="project-name">Тюнинг_салон</h1>
+                    <span class="tags">#html #css</span>
+                </article>
+            </a>
+            <a class="project-card" data-tags="all web" href="https://tvoykrabik07.github.io/grid/">
+                <img src="images/грид.jpg" alt="">
+                <article class="content">
+                    <h1 class="project-name">Grid-art</h1>
+                    <span class="tags">#html #css</span>
+                </article>
+            </a>
+            <a class="project-card" data-tags="all web" href="https://tvoykrabik07.github.io/ojjo/">
+                <img src="images/фото.jpg" alt="">
+                <article class="content">
+                    <h1 class="project-name">Ювелирный магазин</h1>
+                    <span class="tags">#html #css</span>
+                </article>
+            </a>
+        </section>
+    </section>
+<script>
+const links = document.querySelectorAll('.link')
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        links.forEach(ele => ele.classList.remove('active'));
+        link.classList.add('active');
+    })
+});
+</script>
+<script>
+const filters = document.querySelectorAll('.filter-btn');
+filters.forEach(filterBtn => {
+    filterBtn.addEventListener('click', () => {
+        let id = filterBtn.getAttribute('id');
+        let projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            if (card.getAttribute('data-tags').includes(id)) {
+                card.classList.remove('hide');
+            }
+            else {
+                card.classList.add('hide');
+            }
+        })
+        filters.forEach(btn => btn.classList.remove('active'));
+        filterBtn.classList.add('active')
+    })
+})   
+</script>
+</body>
+</html>
